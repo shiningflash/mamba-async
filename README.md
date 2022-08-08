@@ -2,7 +2,7 @@ PyBroker
 =======================
 (Using Celery with Flask and RabbitMQ)
 
-Installing and Configure RabbitMQ
+Installing RabbitMQ
 -----------
 
 **Ubuntu 18.04**
@@ -19,18 +19,19 @@ Install:
 5. It should be listening TCP port 15672 `$ sudo ss -tunelp | grep 15672`
 
 
-## Configure:
+## Configure RabbitMQ
 
 1. Add new user by `$ sudo rabbitmqctl add_user <admin> <mypassword>`
 2. Add virtual host by `$ sudo rabbitmqctl add_vhost <myvhost>`
 3. Add user tag by `$ sudo rabbitmqctl set_user_tags <admin> <mytag>`
 4. Set permission by`$ sudo rabbitmqctl set_permissions -p <myvhost> <admin> ".*" ".*" ".*"`
 
-**To start the server:** `$ sudo rabbitmq-server`
-**To stop it:** `$ sudo rabbitmqctl stop`
+**To start the server:** `$ sudo rabbitmq-server`.
 
-Quick Setup
------------
+**To stop the server:** `$ sudo rabbitmqctl stop`
+
+
+# Project Quick Setup
 
 1. Clone this repository.
 2. Create a virtualenv and install the requirements. `$ virtualenv venv`, `$ source venv/bin/activate` and `pip3 install -r requirements.txt`.

@@ -32,4 +32,8 @@ def _execute_task():
         # Invoke celery task
         task = my_task.delay()
 
-    return jsonify({'taskID': task.id}), 201
+    return jsonify({
+        'taskID': task.id,
+        'status': task.status,
+        'result': task.result
+        }), 201
