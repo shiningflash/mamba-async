@@ -9,7 +9,7 @@ Installing RabbitMQ
 
 Install:
 
-`sudo apt-get install rabbitmq-server`
+`$ sudo apt-get install rabbitmq-server`
 
 ##### *Notes*
 1. Check status by `$ systemctl status rabbitmq-server.service`
@@ -26,7 +26,7 @@ Install:
 3. Add user tag by `$ sudo rabbitmqctl set_user_tags <admin> <mytag>`
 4. Set permission by`$ sudo rabbitmqctl set_permissions -p <myvhost> <admin> ".*" ".*" ".*"`
 
-**To start the server:** `$ sudo rabbitmq-server`.
+**To start the server:** `$ sudo rabbitmq-server`
 
 **To stop the server:** `$ sudo rabbitmqctl stop`
 
@@ -34,7 +34,7 @@ Install:
 # Project Quick Setup
 
 1. Clone this repository.
-2. Create a virtualenv and install the requirements. `$ virtualenv venv`, `$ source venv/bin/activate` and `pip3 install -r requirements.txt`.
+2. Create a virtualenv and install the requirements. `$ virtualenv venv`, `$ source venv/bin/activate` and `$ pip3 install -r requirements.txt`.
 3. Open a terminal window and start a local RabbitMQ server.
 4. Open the second terminal window. Start a Celery worker: `$ celery worker -A wsgi_app.celery --loglevel=info --pool=solo`.
 5. Start the third terminal window for your application: `$ python3 wsgi_app.py`.
