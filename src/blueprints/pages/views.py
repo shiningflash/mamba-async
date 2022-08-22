@@ -1,11 +1,7 @@
-from flask import current_app as app
 from flask import (Blueprint,
-                   render_template,
                    request,
                    jsonify)
 
-import sqlite3
-import pandas as pd
 
 page = Blueprint('pages', __name__, template_folder='templates')
 
@@ -23,14 +19,15 @@ def index():
 @page.route("/_execute_task", methods=['POST'])
 def _execute_task():
     """
-    Invoke this function from an Ajax Call
     :return: json
     """
     from src.blueprints.pages.tasks import my_task
 
     if request.method == 'POST':
         # Invoke celery task
-        task = my_task.delay()
+        print(request.json)
+        payload = request.json
+        task = my_task.delay(payload=payload)
 
     return jsonify({
         'taskID': task.id,
