@@ -1,6 +1,8 @@
-from flask import Flask
-from src.blueprints.pages.views import page
 from celery import Celery
+from flask import Flask
+
+from src.blueprints.pages.consumer import SalesOrderConsumer
+from src.blueprints.pages.views import page
 from src.celery_task_registry import CELERY_TASK_LIST
 
 
@@ -53,3 +55,4 @@ def create_app(settings_override=None):
 
 flask_app = create_app()
 celery_app = make_celery(flask_app)
+celery_app.steps['consumer'].add(SalesOrderConsumer)

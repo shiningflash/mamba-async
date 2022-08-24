@@ -13,7 +13,7 @@ def my_task(*args, **kwargs):
     }
     publish_event(
         event_msg=event_msg,
-        queue='mamba-async_tasks_stock entry_halosis update',
-        exchange='mamba-async',
-        routing_key='mamba-async.tasks.halosis.update'
+        queue='sales_order.events.captured.erpnext.create',
+        exchange='sales_order.events.exchange',
+        routing_key='sales_order.events.captured.erpnext'
     )
