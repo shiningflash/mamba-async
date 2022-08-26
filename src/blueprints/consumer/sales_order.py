@@ -1,6 +1,6 @@
 from celery import bootsteps
 from kombu import Consumer, Exchange, Queue, binding
-from src.blueprints.pages.process import process_sales_order
+from src.blueprints.consumer.process.sales_order import process_sales_order
 
 
 class SalesOrderConsumer(bootsteps.ConsumerStep):

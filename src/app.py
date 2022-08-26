@@ -1,7 +1,7 @@
 from celery import Celery
 from flask import Flask
 
-from src.blueprints.pages.consumer import SalesOrderConsumer
+from src.blueprints.consumer.sales_order import SalesOrderConsumer
 from src.blueprints.pages.views import page
 from src.celery_task_registry import CELERY_TASK_LIST
 

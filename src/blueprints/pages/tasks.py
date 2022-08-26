@@ -1,5 +1,5 @@
 from src.app import celery_app
-from src.publish import publish_event
+from src.publisher import publish_event
 
 celery = celery_app
 
