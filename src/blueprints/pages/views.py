@@ -27,7 +27,12 @@ def _execute_task():
         # Invoke celery task
         print(request.json)
         payload = request.json
-        task = my_task.delay(payload=payload)
+        task = my_task.delay(
+            payload=payload,
+            queue='sales_order.events.captured.erpnext.create',
+            exchange='sales_order.events.exchange',
+            routing_key='sales_order.events.captured.erpnext'
+        )
 
     return jsonify({
         'taskID': task.id,

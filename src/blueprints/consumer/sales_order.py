@@ -34,7 +34,6 @@ class SalesOrderConsumer(bootsteps.ConsumerStep):
         print('enter callbacks')
         try:
             print('enter', 'sales order consumer')
-            print(body)
             message.ack()
             print('done')
             process_sales_order(data=body)

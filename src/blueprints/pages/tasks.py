@@ -1,3 +1,5 @@
+import uuid
+
 from src.app import celery_app
 from src.publisher import publish_event
 
@@ -9,11 +11,15 @@ def my_task(*args, **kwargs):
     print('args: ', args)
     print('kwargs: ', kwargs)
     event_msg = {
+        'event_id': uuid.uuid4().hex,
         'payload': kwargs.get('payload')
     }
+    queue_name = kwargs.get('queue')
+    exhange_name = kwargs.get('exchange')
+    routing_key = kwargs.get('routing_key')
     publish_event(
         event_msg=event_msg,
-        queue='sales_order.events.captured.erpnext.create',
-        exchange='sales_order.events.exchange',
-        routing_key='sales_order.events.captured.erpnext'
+        queue=queue_name,
+        exchange=exhange_name,
+        routing_key=routing_key
     )

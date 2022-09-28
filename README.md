@@ -1,9 +1,8 @@
-Mamba-Async
-=======================
+# Mamba-Async
+
 (Using Celery with Flask and RabbitMQ)
 
-Installing RabbitMQ
------------
+## Installing RabbitMQ
 
 **Ubuntu 18.04**
 
@@ -11,13 +10,13 @@ Install:
 
 `$ sudo apt-get install rabbitmq-server`
 
-##### *Notes*
+##### _Notes_
+
 1. Check status by `$ systemctl status rabbitmq-server.service`
 2. Check enablity by `$ systemctl is-enabled rabbitmq-server.service`
 3. If disabled, enable it by `$ sudo systemctl enable rabbitmq-server`
 4. Enable rabbitmq management dashboard by `$ sudo rabbitmq-plugins enable rabbitmq_management`
 5. It should be listening TCP port 15672 `$ sudo ss -tunelp | grep 15672`
-
 
 ## Configure RabbitMQ
 
@@ -30,7 +29,6 @@ Install:
 
 **To stop the server:** `$ sudo rabbitmqctl stop`
 
-
 # Project Quick Setup
 
 1. Clone this repository.
@@ -39,3 +37,10 @@ Install:
 4. Open the second terminal window. Start a Celery worker: `$ celery worker -A wsgi_app.celery --loglevel=info --pool=solo`.
 5. Start the third terminal window for your application: `$ python3 wsgi_app.py`.
 6. Go to `http://localhost:5000/` and enjoy this application!
+
+#### Optional (See flower)
+
+1. Install flower `$ pip3 install flower`
+2. Open a terminak window and launch flower `$ celery flower --port=5566`
+3. (Optional) Specify Celery application path with address and port for Flower: `$ celery -A proj flower --address=127.0.0.6 --port=5566`
+4. Open the UI at `http://localhost:5566`
